@@ -22,7 +22,14 @@ chmod +x centos_setup.sh
 
 ### 2. 安装饥荒服务器
 
-切换到dstserver用户并运行安装脚本：
+**推荐使用root用户安装**（自动创建dstserver用户）：
+
+```bash
+chmod +x wegame_install.sh
+./wegame_install.sh
+```
+
+**或者切换到dstserver用户安装**：
 
 ```bash
 su - dstserver
@@ -35,12 +42,22 @@ chmod +x wegame_install.sh
 将您的WeGame服务器令牌粘贴到以下文件：
 
 ```bash
-vim ~/dst_server/cluster_1/cluster_token.txt
+vim /home/dstserver/dst_server/cluster_1/cluster_token.txt
 ```
 
 ### 4. 启动服务器
 
-使用管理脚本启动服务器：
+**如果使用root用户安装，切换到dstserver用户启动**：
+
+```bash
+su - dstserver
+cd /home/dstserver
+chmod +x dst_server_manager.sh
+chmod +x auto_backup.sh
+./dst_server_manager.sh start
+```
+
+**如果使用dstserver用户安装，直接启动**：
 
 ```bash
 chmod +x dst_server_manager.sh
